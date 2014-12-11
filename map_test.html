@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel ="stylesheet" href="display.css">
+    <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Dancing+Script:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
+    
+      
+      <style>
+      #map-canvas {
+       width: 1290px;
+height: 1120px;
+        margin: 0px;
+        padding: 0px;    
+      }
+      </style>
+    
+      
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script>
+// Using Google Maps city circles to give you an idea of how this is supposed to work.
+        //This example creates circles on the map, representing
+// populations in North America.
+
+// First, create an object containing LatLng and population for each city.
+var citymap = {};
+citymap['aquarium'] = {
+  center: new google.maps.LatLng(32.7910122, -79.9254743),
+  population: .35
+};
+citymap['brittlebank'] = {
+  center: new google.maps.LatLng(32.7864111, -79.9592708),
+  population: .35
+};
+citymap['oldjail'] = {
+  center: new google.maps.LatLng(32.7786174, -79.937175),
+  population: .35
+};
+citymap['marina'] = {
+  center: new google.maps.LatLng(32.7795155, -79.9514305),
+  population: .35
+};
+        
+citymap['tacoboy'] = {
+center: new google.maps.LatLng(32.8031487, -79.941365),
+population: .35
+};
+
+var cityCircle;
+
+function initialize() {
+  // Create the map.
+  var mapOptions = {
+    zoom: 15,
+    zoomControl: false,
+    panControl: false,
+    scaleControl: false,
+    streetViewControl: false,
+    overviewMapControl: false,
+    scrollwheel: false,
+    draggable: false,
+    center: new google.maps.LatLng(32.7881888, -79.9454158),
+    mapTypeId: google.maps.MapTypeId.TERRAIN
+  };
+
+  var map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+
+  // Construct the circle for each value in citymap.
+  // Note: We scale the area of the circle based on the population.
+  for (var city in citymap) {
+    var populationOptions = {
+      strokeColor: '#FF0000',
+      strokeWeight: 2,
+      fillColor: '#FF0000',
+      
+    
+    
+      map: map,
+      center: citymap[city].center,
+      radius: Math.sqrt(citymap[city].population) * 50
+    };
+    // Add the circle for this city to the map.
+    cityCircle = new google.maps.Circle(populationOptions);
+  }
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    
+      
+      $(city).each(function(i){
+          
+      });
+      
+      
+      </script>
+      
+      
+      
+  </head>
+  <body>
+      <div id="wrapper">
+        <div id=#panel_wrapper>
+          <div id="copy">
+            <header>
+                <h1>Charlestagram</h1> 
+                <hr>
+            </header>
+              <h2>Options</h2>
+              <div id= "panel_body">
+                    <div id="red" class ="circle"></div>
+                    <div id="blue" class ="circle"></div>
+                    <div id="yellow" class="circle"></div>
+                    <div id="green" class="circle"></div> 
+              </div>
+               
+              <div id="labels">
+                  <p>Girls</p>  
+                  <p>Guys</p>
+                  <p>Tourists</p>
+                  <p>Locals</p>
+                    
+              </div>
+              
+          </div>
+        
+        </div>
+    
+          <div id="map_wrapper">
+            <div id="design-canvas">
+                <img src="img/charleston_map_test_2.gif">
+            </div>
+    
+            <div id="map-canvas"></div>
+            </div>
+          
+          <div class ="dots" id="aquarium"></div>
+          <div class ="dots" id="marina"></div>
+          <div class ="dots" id="brittlebank"></div>
+          <div class ="dots" id="tacoboy"></div>
+          <div class ="dots" id="oldjail"></div>
+      
+      </div>
+     
+    </body>
+</html>
